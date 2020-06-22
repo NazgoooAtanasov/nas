@@ -34,6 +34,17 @@ namespace Nas.API
             
             services.AddControllers().AddFluentValidation();
 
+            services.AddCors(opt =>
+            {
+                opt.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyMethod();
+                        builder.AllowAnyOrigin();
+                    });
+            });
+
             services.AddTransient<IValidator<CreateUriModel>, CreateUriModelValidator>();
             services.AddTransient<IValidator<RedirectUriModel>, RedirectUriModelValidator>();
             services.AddScoped<IUriService, UriService>();
@@ -52,7 +63,7 @@ namespace Nas.API
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }

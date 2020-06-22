@@ -17,6 +17,7 @@
 
 <script>
 import axios from "axios";
+const port = 5000;
 
 export default {
   name: 'App',
@@ -29,17 +30,16 @@ export default {
     }
   },
   methods: {
-    create() {
+    async create() {
       try {
-        // TODO: add the port.
-        await axios.post(`https://localhost:${port}`,{
-        body:this.input
-      })
+        await axios.post(`http://localhost:${port}/api/shortener/create`,{
+          'Link': this.input.link,
+          'Slug': this.input.slug
+        },
+      )
       } catch (err) {
         console.log(err)
       }
-      console.log(this.input.link)
-      console.log(this.input.slug)
     }
   }
 }
@@ -54,8 +54,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   
-}
-div{
 }
 div.container-flex{
   border: 1px solid #ccc!important;
