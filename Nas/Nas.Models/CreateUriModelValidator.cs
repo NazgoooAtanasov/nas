@@ -6,7 +6,9 @@ namespace Nas.Models
     {
         public CreateUriModelValidator()
         {
-            RuleFor(x => x.Link).Matches(@"https:\/\/\w+.[a-z]+\/?");
+            RuleFor(x => x.Link)
+                .Matches(
+                    @"^http(s)?:\/\/([\w-]+.)+[\w-]+(\/[\w- .\/?%&=])?$");
             RuleFor(x => x.Slug).MinimumLength(2);
         }
     }

@@ -13,7 +13,7 @@ namespace Nas.API.Controllers
         {
             this.UriService = uriService;
         }
-        
+
         [HttpPost("[action]")]
         public async Task<IActionResult> Create(CreateUriModel model)
         {
@@ -33,12 +33,16 @@ namespace Nas.API.Controllers
             return this.BadRequest();
         }
 
-        [HttpGet("[action]")]
-        public async Task<IActionResult> Redirect(RedirectUriModel model)
+        [HttpGet("[action]/{slug}")]
+        public async Task<IActionResult> Redirect(string slug)
         {
-            if (model != null)
+            if (slug != null)
             {
-                var operation = await this.UriService.GetUriBySlugAsync(model);
+                var redirectUriModel = new RedirectUriModel
+                {
+                    Slug = slug
+                };
+                var operation = await this.UriService.GetUriBySlugAsync(redirectUriModel);
                 return this.Ok(operation);
             }
 
