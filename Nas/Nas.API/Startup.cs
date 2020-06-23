@@ -2,11 +2,10 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
-using Nas.API.Utils;
 using Nas.Data;
 using Nas.Models;
 using Nas.Services;
@@ -25,13 +24,10 @@ namespace Nas.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Setting up database settings
-            services.Configure<DatabaseSettings>(
-                Configuration.GetSection(nameof(DatabaseSettings)));
+            var data = this.Configuration["DatabaseSettings:ConnectionString"];
+            services.AddDbContext<NasDbContext>(
+                opts => opts.UseNpgsql(data));
 
-            services.AddSingleton<IDatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
-            
             services.AddControllers().AddFluentValidation();
 
             services.AddCors(opt =>

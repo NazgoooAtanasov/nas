@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentValidation;
-using MongoDB.Driver;
-using Nas.API.Utils;
+using Microsoft.EntityFrameworkCore;
 using Nas.Data;
 using Nas.Models;
 
@@ -9,20 +9,15 @@ namespace Nas.Services
 {
     public class UriService : IUriService
     {
-        public IMongoCollection<Uri> Uris { get; set; }
+        private NasDbContext Context { get; set; }
+        private IValidator<CreateUriModel> CreateModelValidator { get; set; }
 
-        public IValidator<CreateUriModel> CreateModelValidator { get; set; }
+        private IValidator<RedirectUriModel> RedirectUriModelValidator { get; set; }
 
-        public IValidator<RedirectUriModel> RedirectUriModelValidator { get; set; }
-
-        public UriService(IDatabaseSettings settings, IValidator<CreateUriModel> createModelValidator,
+        public UriService(NasDbContext context ,IValidator<CreateUriModel> createModelValidator,
             IValidator<RedirectUriModel> redirectUriModelValidator)
         {
-            var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.Database);
-
-            this.Uris = database.GetCollection<Uri>(settings.Collection);
-
+            this.Context = context;
             this.CreateModelValidator = createModelValidator;
             this.RedirectUriModelValidator = redirectUriModelValidator;
         }
@@ -45,8 +40,8 @@ namespace Nas.Services
                 Link = model.Link,
                 Slug = model.Slug
             };
-            await this.Uris.InsertOneAsync(uri).ConfigureAwait(true);
-
+            await this.Context.Uris.AddAsync(uri);
+            await this.Context.SaveChangesAsync();
             return true;
         }
 
@@ -58,7 +53,7 @@ namespace Nas.Services
                 return "Model not valid";
             }
 
-            var uri = await this.Uris.Find(x => x.Slug == model.Slug).FirstOrDefaultAsync().ConfigureAwait(false);
+            var uri = await this.Context.Uris.FirstOrDefaultAsync(x => x.Slug == model.Slug).ConfigureAwait(false);
             if (uri != null)
             {
                 return uri.Link;
@@ -67,9 +62,15 @@ namespace Nas.Services
             return "No shortened link with that slug";
         }
 
+        public async Task<List<Uri>> GetAllCreatedShortLinks()
+        {
+            var links = await this.Context.Uris.ToListAsync().ConfigureAwait(false);
+            return links;
+        }
+
         private async Task<bool> IsSlugFreeAsync(string slug)
         {
-            var uri = await this.Uris.Find(x => x.Slug == slug).FirstOrDefaultAsync().ConfigureAwait(false);
+            var uri = await this.Context.Uris.FirstOrDefaultAsync(x => x.Slug == slug).ConfigureAwait(false);
             if (uri != null)
             {
                 return false;

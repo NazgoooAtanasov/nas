@@ -14,12 +14,23 @@ namespace Nas.API.Controllers
             this.UriService = uriService;
         }
 
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetShortUris()
+        {
+            var links = await this.UriService.GetAllCreatedShortLinks().ConfigureAwait(false);
+
+            if (links != null)
+                return this.Ok(links);
+            return this.BadRequest("No links");
+        }
+        
+
         [HttpPost("[action]")]
         public async Task<IActionResult> Create(CreateUriModel model)
         {
             if (model != null)
             {
-                var operation = await this.UriService.CreatedAsync(model);
+                var operation = await this.UriService.CreatedAsync(model).ConfigureAwait(false);
                 if (operation)
                 {
                     return this.Ok("created");
@@ -34,7 +45,7 @@ namespace Nas.API.Controllers
         }
 
         [HttpGet("[action]/{slug}")]
-        public async Task<IActionResult> Redirect(string slug)
+        public async Task<IActionResult> Navigate(string slug)
         {
             if (slug != null)
             {
@@ -42,7 +53,7 @@ namespace Nas.API.Controllers
                 {
                     Slug = slug
                 };
-                var operation = await this.UriService.GetUriBySlugAsync(redirectUriModel);
+                var operation = await this.UriService.GetUriBySlugAsync(redirectUriModel).ConfigureAwait(false);
                 return this.Ok(operation);
             }
 
