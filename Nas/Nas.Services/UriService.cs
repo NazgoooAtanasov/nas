@@ -22,17 +22,17 @@ namespace Nas.Services
             this.RedirectUriModelValidator = redirectUriModelValidator;
         }
 
-        public async Task<bool> CreatedAsync(CreateUriModel model)
+        public async Task<string> CreatedAsync(CreateUriModel model)
         {
             var validationResult = await this.CreateModelValidator.ValidateAsync(model);
             if (validationResult.IsValid == false)
             {
-                return false;
+                return string.Join("\n", validationResult.Errors);
             }
 
             if (await this.IsSlugFreeAsync(model.Slug) == false)
             {
-                return false;
+                return $"{model.Slug} is already in use.";
             }
             
             var uri = new Uri
@@ -42,7 +42,7 @@ namespace Nas.Services
             };
             await this.Context.Uris.AddAsync(uri);
             await this.Context.SaveChangesAsync();
-            return true;
+            return "Successfully created.";
         }
 
         public async Task<string> GetUriBySlugAsync(RedirectUriModel model)

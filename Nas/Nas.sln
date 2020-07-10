@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nas.API", "Nas.API\Nas.API.csproj", "{93EB27E9-294E-424B-A780-80BBBE7D7CFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nas.Web", "Nas.Web\Nas.Web.csproj", "{89BC55F5-F6AC-49CF-B56B-78B9A4030281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nas.Data", "Nas.Data\Nas.Data.csproj", "{D1390080-5F4F-449F-9B1C-CF09E694B0AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nas.Data", "Nas.Data\Nas.Data.csproj", "{D1FECB87-56E8-4C60-94A0-1CB952443DB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nas.Models", "Nas.Models\Nas.Models.csproj", "{A613EB8F-3889-46DE-9D98-ABDF8F086A8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nas.Models", "Nas.Models\Nas.Models.csproj", "{F172AA1E-609C-4E25-874A-8077B572B438}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nas.Services", "Nas.Services\Nas.Services.csproj", "{9FC3CBB6-8121-432D-8994-2462C6258C9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nas.Services", "Nas.Services\Nas.Services.csproj", "{ACC1067D-1D6F-4C73-8B23-A8CD0A5F8597}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,21 +14,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{93EB27E9-294E-424B-A780-80BBBE7D7CFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93EB27E9-294E-424B-A780-80BBBE7D7CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93EB27E9-294E-424B-A780-80BBBE7D7CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93EB27E9-294E-424B-A780-80BBBE7D7CFC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1390080-5F4F-449F-9B1C-CF09E694B0AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1390080-5F4F-449F-9B1C-CF09E694B0AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1390080-5F4F-449F-9B1C-CF09E694B0AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1390080-5F4F-449F-9B1C-CF09E694B0AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A613EB8F-3889-46DE-9D98-ABDF8F086A8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A613EB8F-3889-46DE-9D98-ABDF8F086A8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A613EB8F-3889-46DE-9D98-ABDF8F086A8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A613EB8F-3889-46DE-9D98-ABDF8F086A8C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9FC3CBB6-8121-432D-8994-2462C6258C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FC3CBB6-8121-432D-8994-2462C6258C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FC3CBB6-8121-432D-8994-2462C6258C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FC3CBB6-8121-432D-8994-2462C6258C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89BC55F5-F6AC-49CF-B56B-78B9A4030281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BC55F5-F6AC-49CF-B56B-78B9A4030281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BC55F5-F6AC-49CF-B56B-78B9A4030281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BC55F5-F6AC-49CF-B56B-78B9A4030281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1FECB87-56E8-4C60-94A0-1CB952443DB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1FECB87-56E8-4C60-94A0-1CB952443DB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1FECB87-56E8-4C60-94A0-1CB952443DB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1FECB87-56E8-4C60-94A0-1CB952443DB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F172AA1E-609C-4E25-874A-8077B572B438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F172AA1E-609C-4E25-874A-8077B572B438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F172AA1E-609C-4E25-874A-8077B572B438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F172AA1E-609C-4E25-874A-8077B572B438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACC1067D-1D6F-4C73-8B23-A8CD0A5F8597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACC1067D-1D6F-4C73-8B23-A8CD0A5F8597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACC1067D-1D6F-4C73-8B23-A8CD0A5F8597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACC1067D-1D6F-4C73-8B23-A8CD0A5F8597}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

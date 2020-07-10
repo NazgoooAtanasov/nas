@@ -7,7 +7,7 @@ namespace Nas.Services
 {
     public interface IUriService
     {
-        Task<bool> CreatedAsync(CreateUriModel model);
+        Task<string> CreatedAsync(CreateUriModel model);
         Task<string> GetUriBySlugAsync(RedirectUriModel model);
         Task<List<Uri>> GetAllCreatedShortLinks();
     }

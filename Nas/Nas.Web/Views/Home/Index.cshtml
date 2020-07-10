@@ -1,0 +1,37 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Nas.Models.CreateUriModel
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nas-shortener</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
+</head>
+<body class="text-center">
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm-6  border rounded">
+            <h1 class="display-4">nas-shortener</h1>
+            <form method="post">
+                <div class="form-group">
+                    <label asp-for="Link"> Uri </label>
+                    <input type="text" asp-for="Link" class="form-control" placeholder="Uri"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Slug"> Slug </label>
+                    <input type="text" asp-for="Slug" class="form-control" placeholder="Slug"/>
+                </div>
+                <button type="submit" class="btn btn-primary format_items" asp-controller="Home" asp-action="Create">Create</button>
+                <button class="btn-primary btn format_items" asp-controller="Home" asp-action="AvailableUris">All available short uris</button>
+            </form>
+        </div>
+        <div class="col-sm">
+        </div>
+    </div>
+</div>
+</body>
+</html>

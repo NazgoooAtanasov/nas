@@ -1,0 +1,29 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model string
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nas-shortener</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
+</head>
+<body class="text-center">
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm-6  border rounded">
+            <h1 class="display-4">nas-shortener</h1>
+            <div class="format_items">
+                <p>@Model</p>
+            </div>
+            <a class="btn btn-primary format_items" href="/">Back</a>
+        </div>
+        <div class="col-sm">
+        </div>
+    </div>
+</div>
+</body>
+</html>
